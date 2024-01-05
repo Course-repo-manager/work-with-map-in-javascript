@@ -3,6 +3,14 @@ const DEFAULT_SETTINGS = {
   initZoom: 13,
 }
 
+const DEFAULT_ZOOM_CONTROL_OPTIONS = {
+  position: 'bottomleft',
+  zoomInText: '+',
+  zoomOutText: '-',
+  zoomInTitle: 'Приблизить',
+  zoomOutTitle: 'Отдалить',
+}
+
 export default class {
   #map;
 
@@ -18,7 +26,18 @@ export default class {
       throw new Error(`Root element with id ${rootId} not found`)
     }
 
-    this.#map = L.map(rootElement, mapOptions).setView(initCoords, initZoom)
+    this.#map = L.map(rootElement, mapOptions)
+    this.#map.setView(initCoords, initZoom)
+  }
+
+  addZoomControl(options = DEFAULT_ZOOM_CONTROL_OPTIONS) {
+    const zoomControl = L.control.zoom(options)
+    zoomControl.addTo(this.#map)
+  }
+
+  setZoomRange(min = 0, max = 25) {
+    this.#map.setMinZoom(min)
+    this.#map.setMaxZoom(max)
   }
 
   addTileLayers(tileLayersSettings) {
