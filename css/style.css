@@ -10,3 +10,16 @@
   height: 100vh;
   width: 100vw;
 }
+
+#map__coords {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1000;
+  background: greenyellow;
+  color: black;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 20px;
+}
