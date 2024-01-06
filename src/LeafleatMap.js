@@ -44,7 +44,6 @@ export default class {
 
   moveMarkerTo(marker, coords) {
     marker?.setLatLng?.(coords)
-    this.#map.removeLayer(marker)
   }
 
   addMarker(coords, options = {}) {
