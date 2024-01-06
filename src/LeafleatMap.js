@@ -38,6 +38,23 @@ export default class {
     this.#map.setView(initCoords, initZoom)
   }
 
+  removeLayer(layer) {
+    this.#map?.removeLayer?.(layer)
+  }
+
+  moveMarkerTo(marker, coords) {
+    marker?.setLatLng?.(coords)
+    this.#map.removeLayer(marker)
+  }
+
+  addMarker(coords, options = {}) {
+    const marker = L.marker(coords, options)
+    
+    marker.addTo(this.#map)
+    
+    return marker
+  }
+
   addZoomControl(options = DEFAULT_ZOOM_CONTROL_OPTIONS) {
     const zoomControl = L.control.zoom(options)
     zoomControl.addTo(this.#map)
