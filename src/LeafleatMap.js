@@ -64,7 +64,7 @@ export default class {
 
       const layer = L.tileLayer(url, options)
       
-      this.addTileLayer(layer)
+      this.add(layer)
 
       baseLayers[label] = layer
     });
@@ -72,7 +72,7 @@ export default class {
     L.control.layers(baseLayers).addTo(this.#map)
   }
 
-  addTileLayer(tileLayer) {
-    tileLayer?.addTo?.(this.#map)
+  add(layer) {
+    layer?.addTo?.(this.#map)
   }
 }
