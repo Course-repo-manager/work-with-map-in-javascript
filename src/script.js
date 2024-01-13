@@ -11,4 +11,4 @@ const map = new LeafleatMap({
   initZoom: INIT_VIEW_ZOOM
 })
 
-map.addTileLayers(TILE_LAYERS_SETTING)
+map.add(TILE_LAYERS_SETTING)
